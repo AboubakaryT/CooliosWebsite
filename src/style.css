@@ -1,0 +1,2132 @@
+/* =====================================================
+   GLOBAL
+===================================================== */
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  font-family:
+    "Trebuchet MS",
+    "Arial",
+    sans-serif;
+
+  overflow: hidden;
+}
+
+
+/* =====================================================
+   PAGE
+===================================================== */
+
+.page {
+  width: 100vw;
+  height: 100vh;
+
+  position: relative;
+
+  overflow: hidden;
+
+  background:
+    radial-gradient(
+      circle at 80% 25%,
+      rgba(245, 181, 194, 0.75),
+      transparent 32%
+    ),
+    radial-gradient(
+      circle at 30% 45%,
+      rgba(118, 143, 105, 0.85),
+      transparent 45%
+    ),
+    linear-gradient(
+      135deg,
+      #7e916f 0%,
+      #9aa68a 48%,
+      #dca7ae 100%
+    );
+
+  transition:
+    background 0.3s ease;
+}
+
+
+/* =====================================================
+   DARK MODE PAGE
+===================================================== */
+
+.page.dark-mode {
+  background:
+    radial-gradient(
+      circle at 80% 25%,
+      rgba(115, 76, 91, 0.65),
+      transparent 32%
+    ),
+    radial-gradient(
+      circle at 30% 45%,
+      rgba(53, 72, 53, 0.9),
+      transparent 45%
+    ),
+    linear-gradient(
+      135deg,
+      #354333 0%,
+      #4a5745 48%,
+      #60474d 100%
+    );
+}
+
+
+/* =====================================================
+   DESKTOP WINDOW
+===================================================== */
+
+.desktop-window {
+  position: fixed;
+
+  /* adapt to viewport while keeping a pleasant desktop size */
+  width: min(750px, 92vw);
+  height: min(550px, 90vh);
+
+  left: 50%;
+  top: 50%;
+
+  transform: translate(-50%, -50%);
+
+  overflow: hidden;
+
+  border: 1px solid #3f4f3c;
+
+  border-radius: 8px;
+
+  background: #f7f4ed;
+
+  box-shadow:
+    0 18px 50px rgba(0, 0, 0, 0.25);
+
+  z-index: 10;
+
+  transition:
+    box-shadow 0.2s ease;
+}
+
+
+/* =====================================================
+   DESKTOP TITLE BAR
+===================================================== */
+
+.window-titlebar {
+  width: 100%;
+  height: 30px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  padding: 0 9px;
+
+  background: #f3eee5;
+
+  border-bottom: 1px solid #52614d;
+
+  color: #465743;
+
+  font-size: 12px;
+
+  cursor: grab;
+
+  user-select: none;
+
+  touch-action: none;
+}
+
+.window-titlebar:active {
+  cursor: grabbing;
+}
+
+
+/* =====================================================
+   WINDOW TITLE
+===================================================== */
+
+.window-title {
+  font-size: 12px;
+
+  letter-spacing: 0.3px;
+}
+
+
+/* =====================================================
+   WINDOW BUTTONS
+===================================================== */
+
+.window-buttons {
+  display: flex;
+
+  align-items: center;
+
+  gap: 8px;
+
+  color: #465743;
+
+  font-size: 13px;
+}
+
+.window-buttons span {
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  width: 13px;
+  height: 13px;
+
+  line-height: 1;
+}
+
+
+/* =====================================================
+   DESKTOP
+===================================================== */
+
+.desktop {
+  position: relative;
+
+  width: 100%;
+  height: calc(100% - 30px);
+
+  background:
+    radial-gradient(
+      circle at 78% 25%,
+      rgba(243, 181, 194, 0.72),
+      transparent 35%
+    ),
+    radial-gradient(
+      circle at 25% 45%,
+      rgba(128, 150, 115, 0.9),
+      transparent 50%
+    ),
+    linear-gradient(
+      135deg,
+      #819473,
+      #a5ac94 55%,
+      #dba8af
+    );
+}
+
+
+/* =====================================================
+   DESKTOP ICON COLUMN
+===================================================== */
+
+.desktop-icon-column {
+  position: absolute;
+
+  top: 22px;
+  left: 20px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+
+  gap: 27px;
+}
+
+
+/* =====================================================
+   DESKTOP ICON
+===================================================== */
+
+.desktop-icon {
+  width: 85px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+
+  justify-content: center;
+
+  padding: 0;
+
+  border: none;
+
+  background: transparent;
+
+  color: white;
+
+  cursor: pointer;
+
+  font-family: inherit;
+
+  user-select: none;
+}
+
+.desktop-icon:hover {
+  transform: translateY(-1px);
+}
+
+.desktop-icon:active {
+  transform: scale(0.97);
+}
+
+
+/* =====================================================
+   ICON ART CONTAINER
+===================================================== */
+
+.desktop-icon-art {
+  width: 65px;
+  height: 58px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  margin-bottom: 6px;
+}
+
+
+/* =====================================================
+   ICON LABEL
+===================================================== */
+
+.desktop-icon-label {
+  color: #fff;
+
+  font-size: 12px;
+
+  letter-spacing: 1.1px;
+
+  text-align: center;
+
+  white-space: nowrap;
+
+  text-shadow:
+    0 1px 3px rgba(0, 0, 0, 0.45);
+}
+
+
+/* =====================================================
+   COMPUTER ICON
+===================================================== */
+
+.icon-monitor {
+  position: relative;
+
+  width: 53px;
+  height: 50px;
+}
+
+
+/* monitor screen */
+
+.monitor-screen {
+  position: absolute;
+
+  left: 5px;
+  top: 0;
+
+  width: 43px;
+  height: 31px;
+
+  border: 2px solid #f8d8df;
+
+  border-radius: 2px;
+
+  background: #768b6d;
+
+  box-shadow:
+    3px 3px 0 rgba(255, 255, 255, 0.55);
+}
+
+
+/* monitor inside */
+
+.monitor-screen::after {
+  content: "";
+
+  position: absolute;
+
+  inset: 4px;
+
+  border: 1px solid #f5b9c7;
+
+  opacity: 0.9;
+}
+
+
+/* monitor neck */
+
+.monitor-neck {
+  position: absolute;
+
+  left: 25px;
+  top: 31px;
+
+  width: 8px;
+  height: 7px;
+
+  background: #f8d8df;
+}
+
+
+/* monitor base */
+
+.monitor-base {
+  position: absolute;
+
+  left: 12px;
+  top: 38px;
+
+  width: 34px;
+  height: 5px;
+
+  border-radius: 2px;
+
+  background: #f8d8df;
+
+  box-shadow:
+    3px 2px 0 rgba(255, 255, 255, 0.55);
+}
+
+
+/* =====================================================
+   FOLDER ICON
+===================================================== */
+
+.icon-folder {
+  position: relative;
+
+  width: 56px;
+  height: 40px;
+
+  margin-top: 7px;
+
+  border: 1.5px solid #465743;
+
+  border-radius: 2px;
+
+  background: #f5cbd4;
+
+  box-shadow:
+    3px 3px 0 rgba(255, 255, 255, 0.55);
+}
+
+
+/* folder tab */
+
+.folder-tab {
+  position: absolute;
+
+  top: -8px;
+  left: 0;
+
+  width: 23px;
+  height: 10px;
+
+  border: 1.5px solid #465743;
+
+  border-bottom: none;
+
+  border-radius: 2px 2px 0 0;
+
+  background: #f5cbd4;
+}
+
+
+/* =====================================================
+   MAIL ICON
+===================================================== */
+
+.icon-mail {
+  position: relative;
+
+  width: 58px;
+  height: 39px;
+
+  border: 1.5px solid #465743;
+
+  background: #fff8ed;
+
+  box-shadow:
+    3px 3px 0 rgba(255, 255, 255, 0.5);
+}
+
+
+/* left envelope line */
+
+.mail-left {
+  position: absolute;
+
+  left: 1px;
+  top: 0;
+
+  width: 35px;
+  height: 27px;
+
+  border-left: 1.5px solid #f1b6c4;
+
+  border-bottom: 1.5px solid #f1b6c4;
+
+  transform:
+    rotate(-36deg)
+    translate(-5px, 8px);
+}
+
+
+/* right envelope line */
+
+.mail-right {
+  position: absolute;
+
+  right: 1px;
+  top: 0;
+
+  width: 35px;
+  height: 27px;
+
+  border-right: 1.5px solid #f1b6c4;
+
+  border-bottom: 1.5px solid #f1b6c4;
+
+  transform:
+    rotate(36deg)
+    translate(5px, 8px);
+}
+
+
+/* =====================================================
+   DOCUMENT ICON
+===================================================== */
+
+.icon-document {
+  position: relative;
+
+  width: 43px;
+  height: 52px;
+
+  border: 1.5px solid #465743;
+
+  background: #fff9ef;
+
+  box-shadow:
+    3px 3px 0 rgba(255, 255, 255, 0.5);
+}
+
+
+/* folded corner */
+
+.document-fold {
+  position: absolute;
+
+  right: -1px;
+  top: -1px;
+
+  width: 15px;
+  height: 15px;
+
+  background: #f2bdca;
+
+  border-left: 1.5px solid #465743;
+
+  border-bottom: 1.5px solid #465743;
+}
+
+
+/* document lines */
+
+.document-lines {
+  position: absolute;
+
+  left: 9px;
+  top: 25px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 5px;
+}
+
+.document-lines span {
+  width: 24px;
+  height: 2px;
+
+  background: #f2bdca;
+}
+
+
+/* =====================================================
+   TASKBAR
+===================================================== */
+
+.taskbar {
+  position: absolute;
+
+  left: 0;
+  bottom: 0;
+
+  width: 100%;
+  height: 42px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  padding: 0 14px;
+
+  background: #f2b9c5;
+
+  border-top: 1px solid #4c5d48;
+
+  color: #465743;
+}
+
+
+/* =====================================================
+   LIGHT / DARK MODE BUTTON
+===================================================== */
+
+.theme-toggle {
+  width: 27px;
+  height: 27px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  padding: 0;
+
+  border: none;
+
+  background: transparent;
+
+  color: #465743;
+
+  font-size: 18px;
+
+  line-height: 1;
+
+  cursor: pointer;
+
+  border-radius: 50%;
+
+  transition:
+    background 0.15s ease,
+    transform 0.15s ease;
+}
+
+.theme-toggle:hover {
+  background:
+    rgba(255, 255, 255, 0.25);
+
+  transform: scale(1.08);
+}
+
+.theme-toggle:active {
+  transform: scale(0.92);
+}
+
+
+/* =====================================================
+   TASKBAR RIGHT
+===================================================== */
+
+.taskbar-right {
+  height: 100%;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: flex-end;
+
+  gap: 14px;
+
+  flex-shrink: 0;
+}
+
+
+/* =====================================================
+   WIFI
+===================================================== */
+
+.wifi {
+  position: relative;
+
+  width: 22px;
+  height: 22px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  flex-shrink: 0;
+}
+
+
+/* outer wifi */
+
+.wifi-outer {
+  position: absolute;
+
+  top: 3px;
+
+  width: 20px;
+  height: 12px;
+
+  border: 2px solid #465743;
+
+  border-bottom: none;
+
+  border-left-color: transparent;
+  border-right-color: transparent;
+
+  border-radius:
+    20px 20px 0 0;
+}
+
+
+/* middle wifi */
+
+.wifi-middle {
+  position: absolute;
+
+  top: 8px;
+
+  width: 13px;
+  height: 8px;
+
+  border: 2px solid #465743;
+
+  border-bottom: none;
+
+  border-left-color: transparent;
+  border-right-color: transparent;
+
+  border-radius:
+    15px 15px 0 0;
+}
+
+
+/* inner wifi */
+
+.wifi-inner {
+  position: absolute;
+
+  top: 12px;
+
+  width: 6px;
+  height: 4px;
+
+  border: 2px solid #465743;
+
+  border-bottom: none;
+
+  border-left-color: transparent;
+  border-right-color: transparent;
+
+  border-radius:
+    8px 8px 0 0;
+}
+
+
+/* wifi dot */
+
+.wifi-dot {
+  position: absolute;
+
+  bottom: 2px;
+
+  width: 4px;
+  height: 4px;
+
+  border-radius: 50%;
+
+  background: #465743;
+}
+
+
+/* =====================================================
+   VOLUME — WINDOWS STYLE
+===================================================== */
+
+.volume {
+  position: relative;
+
+  width: 24px;
+  height: 22px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  flex-shrink: 0;
+}
+
+
+/* Speaker body */
+
+.speaker {
+  position: absolute;
+
+  left: 2px;
+  top: 7px;
+
+  width: 7px;
+  height: 9px;
+
+  background: #465743;
+
+  border-radius: 1px;
+}
+
+
+/* Speaker cone */
+
+.speaker::after {
+  content: "";
+
+  position: absolute;
+
+  left: 5px;
+  top: -4px;
+
+  width: 0;
+  height: 0;
+
+  border-top: 8.5px solid transparent;
+  border-bottom: 8.5px solid transparent;
+  border-left: 9px solid #465743;
+}
+
+
+/* =====================================================
+   SOUND WAVES
+===================================================== */
+
+.sound-wave {
+  position: absolute;
+
+  border: 1.5px solid #465743;
+
+  border-left: 0;
+
+  border-top-color: transparent;
+  border-bottom-color: transparent;
+
+  border-radius:
+    0 50% 50% 0;
+
+  pointer-events: none;
+}
+
+
+/* Small wave */
+
+.wave-one {
+  left: 12px;
+  top: 6px;
+
+  width: 6px;
+  height: 10px;
+}
+
+
+/* Large wave */
+
+.wave-two {
+  left: 12px;
+  top: 3px;
+
+  width: 10px;
+  height: 16px;
+}
+
+
+/* =====================================================
+   TASKBAR DIVIDER
+===================================================== */
+
+.taskbar-divider {
+  width: 1px;
+  height: 22px;
+
+  margin: 0 2px;
+
+  flex-shrink: 0;
+
+  background: #465743;
+}
+
+
+/* =====================================================
+   CLOCK
+===================================================== */
+
+.clock {
+  min-width: 65px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+
+  justify-content: center;
+
+  line-height: 1.1;
+
+  color: #465743;
+
+  white-space: nowrap;
+}
+
+.clock-time {
+  font-size: 11px;
+}
+
+.clock-date {
+  margin-top: 3px;
+
+  font-size: 11px;
+}
+
+
+/* =====================================================
+   MODAL OVERLAY
+===================================================== */
+
+.modal-overlay {
+  position: fixed;
+
+  inset: 0;
+
+  z-index: 100;
+
+  background:
+    rgba(30, 35, 29, 0.08);
+
+  pointer-events: auto;
+}
+
+
+/* =====================================================
+   BROWSER WINDOW
+===================================================== */
+
+.browser-window {
+  position: fixed;
+
+  left: 50%;
+  top: 50%;
+
+  transform:
+    translate(-50%, -50%);
+
+  /* fluid width for small screens */
+  width: min(620px, 96vw);
+
+  max-width:
+    calc(100vw - 30px);
+
+  min-height: 300px;
+
+  background: #fffaf5;
+
+  border: 1px solid #465743;
+
+  border-radius: 7px;
+
+  overflow: hidden;
+
+  box-shadow:
+    8px 12px 30px
+    rgba(0, 0, 0, 0.2);
+
+  color: #465743;
+}
+
+
+/* =====================================================
+   BROWSER TOP BAR
+===================================================== */
+
+.browser-top {
+  width: 100%;
+  height: 32px;
+
+  display: flex;
+
+  align-items: center;
+
+  padding: 0 10px;
+
+  background: #f4c5cf;
+
+  border-bottom: 1px solid #465743;
+
+  cursor: grab;
+
+  user-select: none;
+
+  touch-action: none;
+}
+
+.browser-top:active {
+  cursor: grabbing;
+}
+
+
+/* =====================================================
+   BROWSER DOTS
+===================================================== */
+
+.browser-dots {
+  display: flex;
+
+  align-items: center;
+
+  gap: 5px;
+
+  width: 55px;
+}
+
+.browser-dots span {
+  width: 7px;
+  height: 7px;
+
+  border-radius: 50%;
+
+  border: 1px solid #465743;
+
+  background: #fff5ed;
+}
+
+
+/* =====================================================
+   BROWSER TITLE
+===================================================== */
+
+.browser-window-title {
+  flex: 1;
+
+  text-align: center;
+
+  font-size: 12px;
+
+  letter-spacing: 0.3px;
+}
+
+
+/* =====================================================
+   BROWSER CLOSE
+===================================================== */
+
+.browser-close {
+  width: 22px;
+  height: 22px;
+
+  padding: 0;
+
+  border: none;
+
+  background: transparent;
+
+  color: #465743;
+
+  font-size: 17px;
+
+  line-height: 1;
+
+  cursor: pointer;
+}
+
+.browser-close:hover {
+  background:
+    rgba(255, 255, 255, 0.3);
+
+  border-radius: 3px;
+}
+
+
+/* =====================================================
+   ADDRESS BAR
+===================================================== */
+
+.address-bar {
+  height: 29px;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 7px;
+
+  padding: 0 11px;
+
+  background: #f8f4ed;
+
+  border-bottom: 1px solid #d8d2c7;
+
+  color: #6c7666;
+
+  font-size: 11px;
+}
+
+
+/* =====================================================
+   ADDRESS LOCK
+===================================================== */
+
+.address-lock {
+  font-size: 7px;
+
+  color: #687764;
+}
+
+
+/* =====================================================
+   MODAL CONTENT
+===================================================== */
+
+.modal-content {
+  min-height: 340px;
+
+  padding: 27px 32px 32px;
+
+  background: #fffaf5;
+}
+
+
+/* small heading */
+
+.modal-small-title {
+  margin: 0 0 5px;
+
+  color: #8a9680;
+
+  font-size: 10px;
+
+  letter-spacing: 1.5px;
+
+  text-transform: lowercase;
+}
+
+
+/* main heading */
+
+.modal-content h2 {
+  margin: 0 0 18px;
+
+  color: #465743;
+
+  font-size: 27px;
+
+  font-weight: 500;
+
+  letter-spacing: -0.5px;
+}
+
+
+/* paragraph */
+
+.modal-content p {
+  max-width: 380px;
+
+  margin: 0 0 14px;
+
+  color: #596455;
+
+  font-size: 13px;
+
+  line-height: 1.7;
+}
+
+
+/* ABOUT CONTENT */
+
+.about-content {
+  display: flex;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 22px;
+}
+
+.about-copy {
+  flex: 1 1 310px;
+}
+
+.about-copy p {
+  max-width: none;
+  margin-bottom: 12px;
+}
+
+.about-image-wrap {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+
+/* links */
+
+.modal-content a {
+  color: #465743;
+
+  font-size: 13px;
+
+  text-decoration:
+    underline;
+
+  text-decoration-color:
+    #e6aab8;
+
+  text-underline-offset: 3px;
+}
+
+.modal-content a:hover {
+  color: #a46e79;
+}
+
+.modal-content img {
+  max-width: 400px;
+  height: auto;
+}
+
+/* =====================================================
+   PORTFOLIO
+===================================================== */
+
+.portfolio-intro {
+  margin: -7px 0 15px;
+
+  max-width: 480px;
+
+  color: #687264;
+
+  font-size: 11px;
+
+  line-height: 1.5;
+}
+
+
+/* =====================================================
+   PORTFOLIO FOLDER
+===================================================== */
+
+.portfolio-folder {
+  width: min(100%, 560px);
+  max-height: 340px;
+  margin-top: 6px;
+  border: 1px solid #465743;
+  border-radius: 9px;
+  overflow: hidden;
+  background: #f9f3ec;
+  box-shadow: 3px 3px 0 rgba(70, 87, 67, 0.12);
+}
+
+.portfolio-folder-header {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 34px;
+  padding: 0 18px;
+  background: #efd4db;
+  border-bottom: 1px solid #465743;
+  color: #465743;
+  font-size: 11px;
+  letter-spacing: 0.5px;
+  text-transform: none;
+}
+
+.portfolio-folder-tab {
+  position: absolute;
+  left: 16px;
+  top: -8px;
+  width: 130px;
+  height: 18px;
+  border: 1px solid #465743;
+  border-bottom: none;
+  border-radius: 6px 6px 0 0;
+  background: #f9f3ec;
+}
+
+.portfolio-folder-body {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+  padding: 18px 16px 16px;
+  background:
+    linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.18),
+      rgba(255, 255, 255, 0)
+    );
+}
+
+.portfolio-file {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+  padding: 10px 8px 8px;
+  border: 1px solid #d6c7bb;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.38);
+  color: #465743;
+  font-family: inherit;
+  text-align: center;
+  cursor: pointer;
+  transition: transform 0.18s ease, border-color 0.18s ease, box-shadow 0.18s ease;
+}
+
+.portfolio-file:hover {
+  transform: translateY(-2px);
+  border-color: #d598a7;
+  box-shadow: 0 6px 14px rgba(70, 87, 67, 0.08);
+}
+
+.portfolio-file-art {
+  width: 100%;
+  height: 110px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border-radius: 6px;
+  background: #eee4df;
+}
+
+.portfolio-file-art img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.portfolio-file-name {
+  max-width: 100%;
+  color: #465743;
+  font-size: 10px;
+  line-height: 1.3;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+
+/* =====================================================
+   PORTFOLIO GALLERY
+===================================================== */
+
+.portfolio-gallery {
+  display: grid;
+
+  grid-template-columns:
+    repeat(2, minmax(0, 1fr));
+
+  gap: 13px;
+
+  /*
+    Keeps the portfolio window small.
+    Extra projects can be reached by scrolling.
+  */
+  max-height: 245px;
+
+  padding:
+    2px
+    9px
+    8px
+    2px;
+
+  overflow-y: scroll;
+  overflow-x: hidden;
+
+  scrollbar-width: thin;
+
+  scrollbar-color:
+    #d999a8
+    #f5e7e5;
+}
+
+
+/* =====================================================
+   PORTFOLIO SCROLLBAR
+===================================================== */
+
+.portfolio-gallery::-webkit-scrollbar {
+  width: 7px;
+}
+
+
+.portfolio-gallery::-webkit-scrollbar-track {
+  background: #f5e7e5;
+
+  border-radius: 10px;
+}
+
+
+.portfolio-gallery::-webkit-scrollbar-thumb {
+  background: #d999a8;
+
+  border: 2px solid #f5e7e5;
+
+  border-radius: 10px;
+}
+
+
+.portfolio-gallery::-webkit-scrollbar-thumb:hover {
+  background: #be7e8e;
+}
+
+
+/* =====================================================
+   PORTFOLIO CARD
+===================================================== */
+
+.portfolio-card {
+  min-width: 0;
+
+  padding: 5px;
+
+  border: 1px solid #65735f;
+
+  border-radius: 7px;
+
+  overflow: hidden;
+
+  background: #fffaf5;
+
+  color: #465743;
+
+  font-family: inherit;
+
+  text-align: left;
+
+  cursor: pointer;
+
+  box-shadow:
+    3px 3px 0
+    rgba(70, 87, 67, 0.12);
+
+  transition:
+    transform 0.18s ease,
+    box-shadow 0.18s ease,
+    border-color 0.18s ease;
+}
+
+
+.portfolio-card:hover {
+  transform:
+    translateY(-3px);
+
+  border-color: #d598a7;
+
+  box-shadow:
+    4px 5px 0
+    rgba(70, 87, 67, 0.14);
+}
+
+
+.portfolio-card:active {
+  transform:
+    translateY(-1px)
+    scale(0.99);
+}
+
+
+/* =====================================================
+   PORTFOLIO IMAGE
+===================================================== */
+
+.portfolio-image-wrapper {
+  position: relative;
+
+  width: 100%;
+  height: 95px;
+
+  overflow: hidden;
+
+  border-radius: 4px;
+
+  background: #eee5df;
+}
+
+.portfolio-image-wrapper-wide {
+  background: transparent;
+}
+
+.portfolio-image {
+  display: block;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+
+  transition:
+    transform 0.3s ease,
+    filter 0.3s ease;
+}
+
+.portfolio-image-wide {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  background: transparent;
+}
+
+.project-showcase-image {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: calc(70vh + 35px);
+  overflow: visible;
+}
+
+
+/* =====================================================
+   VIEW PROJECT HOVER
+===================================================== */
+
+.portfolio-hover {
+  position: absolute;
+
+  inset: 0;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  opacity: 0;
+
+  background:
+    rgba(63, 81, 60, 0.17);
+
+  transition:
+    opacity 0.2s ease;
+}
+
+
+.portfolio-hover span {
+  padding:
+    5px
+    9px;
+
+  border:
+    1px solid
+    rgba(255, 255, 255, 0.9);
+
+  border-radius: 20px;
+
+  background:
+    rgba(255, 250, 245, 0.94);
+
+  color: #465743;
+
+  font-size: 9px;
+
+  letter-spacing: 0.5px;
+}
+
+
+.portfolio-card:hover .portfolio-hover {
+  opacity: 1;
+}
+
+
+/* =====================================================
+   PORTFOLIO CARD INFORMATION
+===================================================== */
+
+.portfolio-card-info {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 3px;
+
+  padding:
+    8px
+    5px
+    5px;
+}
+
+
+.portfolio-card-info strong {
+  overflow: hidden;
+
+  color: #465743;
+
+  font-size: 10px;
+
+  font-weight: 600;
+
+  text-overflow: ellipsis;
+
+  white-space: nowrap;
+}
+
+
+.portfolio-card-info span {
+  color: #b17885;
+
+  font-size: 8px;
+}
+
+
+/* =====================================================
+   SELECTED PROJECT OVERLAY
+===================================================== */
+
+.project-showcase-overlay {
+  position: fixed;
+
+  inset: 0;
+
+  z-index: 5000;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+
+
+  /*
+    Lets you still see the desktop
+    and portfolio underneath.
+  */
+  background:
+    rgba(40, 49, 38, 0.42);
+
+  animation:
+    showcaseFade 0.17s ease;
+}
+
+
+@keyframes showcaseFade {
+
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+
+}
+
+
+/* =====================================================
+   SELECTED PROJECT WINDOW
+===================================================== */
+
+.project-showcase {
+  position: relative;
+
+  /*
+    Intentionally much smaller than before.
+  */
+  
+  display: flex;
+
+  flex-direction: column;
+
+  overflow: hidden;
+
+  border: 1px solid #465743;
+
+  border-radius: 7px;
+
+  background: #fffaf5;
+
+  color: #465743;
+
+  box-shadow:
+    7px
+    9px
+    0
+    rgba(45, 58, 43, 0.16),
+    0
+    15px
+    40px
+    rgba(0, 0, 0, 0.2);
+
+  animation:
+    projectPop 0.18s ease;
+}
+
+.project-showcase-wide {
+  width: min(90vw, 760px);
+}
+
+
+@keyframes projectPop {
+
+  from {
+    opacity: 0;
+
+    transform:
+      translateY(5px)
+      scale(0.97);
+  }
+
+  to {
+    opacity: 1;
+
+    transform:
+      translateY(0)
+      scale(1);
+  }
+
+}
+
+
+/* =====================================================
+   PROJECT WINDOW TOP BAR
+===================================================== */
+
+
+
+/* =====================================================
+   PROJECT IMAGE AREA
+===================================================== */
+
+.project-showcase-image {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: calc(70vh + 35px);
+  overflow: visible;
+}
+
+
+/* =====================================================
+   PROJECT IMAGE SCROLLBAR
+===================================================== */
+
+.project-showcase-image::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+}
+
+
+.project-showcase-image::-webkit-scrollbar-track {
+  background: #eee1df;
+}
+
+
+.project-showcase-image::-webkit-scrollbar-thumb {
+  background: #d999a8;
+
+  border-radius: 10px;
+
+  border:
+    2px solid #eee1df;
+}
+
+
+/* =====================================================
+   SELECTED PROJECT IMAGE
+===================================================== */
+
+.project-showcase-photo {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 70vh;
+  object-fit: cover;
+}
+
+.project-showcase-photo-wide {
+  max-width: 100%;
+  object-fit: contain;
+}
+
+
+/* =====================================================
+   CHIIKAWA GIF
+===================================================== */
+
+.chiikawa-gif {
+  display: block;
+
+  max-width: 220px;
+  max-height: 150px;
+
+  width: auto;
+  height: auto;
+
+  margin-top: 0;
+
+  border-radius: 6px;
+
+  object-fit: contain;
+}
+
+
+/* =====================================================
+   PORTFOLIO — SMALL SCREENS
+===================================================== */
+
+@media (max-width: 520px) {
+
+  .portfolio-gallery {
+    grid-template-columns: 1fr;
+
+    max-height: 260px;
+  }
+
+
+  .portfolio-image-wrapper {
+    height: 125px;
+  }
+  
+}
+
+
+/* =====================================================
+   RESUME BUTTON
+===================================================== */
+
+.resume-button {
+  margin-top: 8px;
+
+  padding: 9px 16px;
+
+  border: 1px solid #465743;
+
+  border-radius: 4px;
+
+  background: #f3c3ce;
+
+  color: #465743;
+
+  font-family: inherit;
+
+  font-size: 12px;
+
+  cursor: pointer;
+}
+
+.resume-button:hover {
+  background: #eab2bf;
+}
+
+
+/* =====================================================
+   DARK MODE — DESKTOP
+===================================================== */
+
+.desktop-dark .desktop {
+  background:
+    radial-gradient(
+      circle at 78% 25%,
+      rgba(119, 74, 88, 0.7),
+      transparent 35%
+    ),
+    radial-gradient(
+      circle at 25% 45%,
+      rgba(56, 76, 55, 0.95),
+      transparent 50%
+    ),
+    linear-gradient(
+      135deg,
+      #354633,
+      #4a5744 55%,
+      #63484e
+    );
+}
+
+
+/* =====================================================
+   DARK MODE — WINDOW TITLE BAR
+===================================================== */
+
+.desktop-dark .window-titlebar {
+  background: #252c24;
+
+  border-color: #414a3e;
+
+  color: #e7e2d9;
+}
+
+.desktop-dark .window-buttons {
+  color: #e7e2d9;
+}
+
+
+/* =====================================================
+   DARK MODE — TASKBAR
+===================================================== */
+
+.desktop-dark .taskbar {
+  background: #282e27;
+
+  border-color: #4e5a4b;
+
+  color: #e7e2d9;
+}
+
+
+/* =====================================================
+   DARK MODE — THEME BUTTON
+===================================================== */
+
+.desktop-dark .theme-toggle {
+  color: #f5d789;
+}
+
+.desktop-dark .theme-toggle:hover {
+  background:
+    rgba(255, 255, 255, 0.08);
+}
+
+
+/* =====================================================
+   DARK MODE — DESKTOP LABELS
+===================================================== */
+
+.desktop-dark .desktop-icon-label {
+  color: #f4eee5;
+
+  text-shadow:
+    0 1px 4px
+    rgba(0, 0, 0, 0.8);
+}
+
+
+/* =====================================================
+   DARK MODE — WIFI
+===================================================== */
+
+.desktop-dark .wifi-outer,
+.desktop-dark .wifi-middle,
+.desktop-dark .wifi-inner {
+  border-top-color: #e5dfd4;
+}
+
+.desktop-dark .wifi-dot {
+  background: #e5dfd4;
+}
+
+
+/* =====================================================
+   DARK MODE — VOLUME
+===================================================== */
+
+.desktop-dark .speaker {
+  background: #e5dfd4;
+}
+
+.desktop-dark .speaker::after {
+  border-left-color: #e5dfd4;
+}
+
+.desktop-dark .sound-wave {
+  border-color: #e5dfd4;
+
+  border-left: 0;
+}
+
+
+/* =====================================================
+   DARK MODE — DIVIDER
+===================================================== */
+
+.desktop-dark .taskbar-divider {
+  background: #aaa99f;
+}
+
+
+/* =====================================================
+   DARK MODE — CLOCK
+===================================================== */
+
+.desktop-dark .clock {
+  color: #e5dfd4;
+}
+
+
+/* =====================================================
+   RESPONSIVE
+===================================================== */
+
+@media (max-width: 700px) {
+
+  .desktop-window {
+    width: calc(100vw - 24px);
+
+    height: min(
+      470px,
+      calc(100vh - 24px)
+    );
+  }
+
+  .desktop-icon-column {
+    left: 12px;
+  }
+
+  .browser-window {
+    width: calc(100vw - 30px);
+  }
+
+}
+
+
+/* =====================================================
+   VERY SMALL SCREENS
+===================================================== */
+
+@media (max-width: 450px) {
+
+  .desktop-icon-column {
+    top: 15px;
+
+    gap: 18px;
+  }
+
+  .desktop-icon {
+    width: 75px;
+  }
+
+  .desktop-icon-art {
+    transform: scale(0.9);
+  }
+
+  .desktop-icon-label {
+    font-size: 10px;
+  }
+
+  .taskbar {
+    padding: 0 9px;
+  }
+
+  .taskbar-right {
+    gap: 9px;
+  }
+
+  .clock {
+    min-width: 55px;
+  }
+
+  .clock-time,
+  .clock-date {
+    font-size: 9px;
+  }
+
+  .modal-content {
+    padding:
+      22px 20px 25px;
+  }
+
+  .project-showcase-image {
+    height: calc(70vh + 35px);
+    max-height: none;
+    overflow: visible;
+  }
+}
+
+
+/* =====================================================
+   ACCESSIBILITY
+===================================================== */
+
+button:focus-visible {
+  outline: 2px solid #465743;
+
+  outline-offset: 2px;
+}
+
+
+/* =====================================================
+   PREVENT IMAGE / TEXT SELECTION WHILE DRAGGING
+===================================================== */
+
+.desktop-window,
+.browser-window {
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+.modal-content {
+  -webkit-user-select: text;
+  user-select: text;
+}
+
+/* =====================================================
+   PORTFOLIO ENTRY BUTTON
+===================================================== */
+
+.portfolio-entry-button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  padding: 18px 18px 12px;
+  border: 1px solid #465743;
+  border-radius: 8px;
+  background: #fffaf5;
+  color: #465743;
+  font-family: inherit;
+  cursor: pointer;
+  box-shadow: 3px 3px 0 rgba(70, 87, 67, 0.12);
+}
+
+.portfolio-entry-button:hover {
+  transform: translateY(-1px);
+}
+
+.portfolio-entry-folder {
+  position: relative;
+  width: 80px;
+  height: 58px;
+  border: 1.5px solid #465743;
+  border-radius: 3px;
+  background: #f5cbd4;
+  box-shadow: 3px 3px 0 rgba(255, 255, 255, 0.55);
+}
+
+.portfolio-entry-folder .folder-tab {
+  position: absolute;
+  top: -8px;
+  left: 0;
+  width: 24px;
+  height: 10px;
+  border: 1.5px solid #465743;
+  border-bottom: none;
+  border-radius: 2px 2px 0 0;
+  background: #f5cbd4;
+}
+
+.portfolio-entry-label {
+  color: #465743;
+  font-size: 11px;
+  letter-spacing: 0.8px;
+  text-align: center;
+}

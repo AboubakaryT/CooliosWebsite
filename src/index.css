@@ -1,0 +1,788 @@
+/* =====================================================
+   COLORS
+===================================================== */
+
+:root {
+  --green: #657c5d;
+  --green-dark: #42543e;
+
+  --pink: #f0b0bd;
+  --pink-light: #f6c5cf;
+
+  --cream: #fff8f5;
+}
+
+
+/* =====================================================
+   RESET
+===================================================== */
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  margin: 0;
+  width: 100%;
+  min-height: 100%;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+
+  background: #e9e7df;
+
+  color: var(--green-dark);
+}
+
+
+/* =====================================================
+   PAGE
+===================================================== */
+
+.page {
+  min-height: 100vh;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  padding: 30px;
+}
+
+
+/* =====================================================
+   OUTER COMPUTER WINDOW
+===================================================== */
+
+/*
+  This is the part that makes the Windows desktop
+  look like a small application/window.
+
+  Increase these numbers if you want it bigger.
+*/
+
+.computer-window {
+  width: 560px;
+  height: 370px;
+
+  overflow: hidden;
+
+  border: 1px solid #394636;
+
+  border-radius: 7px;
+
+  background: #ffffff;
+
+  box-shadow:
+    0 10px 30px rgba(0, 0, 0, 0.18);
+}
+
+
+/* =====================================================
+   WINDOW TITLE BAR
+===================================================== */
+
+.computer-titlebar {
+  height: 28px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 0 9px;
+
+  background: #eeeae4;
+
+  border-bottom: 1px solid #aaa59d;
+
+  font-size: 8px;
+
+  color: #555;
+}
+
+
+.computer-title {
+  font-weight: 500;
+}
+
+
+.computer-controls {
+  display: flex;
+
+  align-items: center;
+
+  gap: 11px;
+
+  color: #555;
+
+  font-size: 10px;
+}
+
+
+.computer-controls span {
+  cursor: default;
+}
+
+
+/* =====================================================
+   WINDOWS DESKTOP
+===================================================== */
+
+.windows-desktop {
+  position: relative;
+
+  width: 100%;
+  height: calc(100% - 28px);
+
+  overflow: hidden;
+
+  /*
+    Main wallpaper.
+
+    Green dominates the left side,
+    pink enters from the right,
+    just like the reference image.
+  */
+
+  background:
+    radial-gradient(
+      ellipse at 88% 20%,
+      rgba(246, 190, 201, 0.85) 0%,
+      rgba(246, 190, 201, 0.45) 20%,
+      transparent 48%
+    ),
+    radial-gradient(
+      ellipse at 92% 75%,
+      rgba(244, 181, 196, 0.9) 0%,
+      rgba(244, 181, 196, 0.35) 22%,
+      transparent 45%
+    ),
+    linear-gradient(
+      110deg,
+      #71876a 0%,
+      #73896b 43%,
+      #7c886e 57%,
+      #c2a79a 75%,
+      #e4aab8 100%
+    );
+
+  /*
+    Gives the wallpaper a subtle grain,
+    similar to the image.
+  */
+}
+
+
+/* subtle wallpaper texture */
+
+.windows-desktop::after {
+  content: "";
+
+  position: absolute;
+
+  inset: 0;
+
+  pointer-events: none;
+
+  opacity: 0.12;
+
+  background-image:
+    repeating-linear-gradient(
+      0deg,
+      rgba(255,255,255,0.12) 0px,
+      rgba(255,255,255,0.12) 1px,
+      transparent 1px,
+      transparent 3px
+    );
+
+  mix-blend-mode: overlay;
+}
+
+
+/* =====================================================
+   DESKTOP ICON COLUMN
+===================================================== */
+
+.desktop-icons {
+  position: absolute;
+
+  z-index: 2;
+
+  top: 16px;
+  left: 15px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+
+  gap: 25px;
+}
+
+
+/* =====================================================
+   DESKTOP ICON
+===================================================== */
+
+.desktop-icon {
+  width: 62px;
+
+  padding: 0;
+
+  border: none;
+
+  background: transparent;
+
+  cursor: pointer;
+
+  color: white;
+
+  font-family: Arial, Helvetica, sans-serif;
+
+  text-shadow:
+    0 1px 2px rgba(0,0,0,0.35);
+
+  transition:
+    transform 0.15s ease;
+}
+
+
+.desktop-icon:hover {
+  transform: scale(1.04);
+}
+
+
+.desktop-icon:active {
+  transform: scale(0.97);
+}
+
+
+.desktop-icon > span {
+  display: block;
+
+  margin-top: 5px;
+
+  font-size: 9px;
+
+  letter-spacing: 0.7px;
+
+  white-space: nowrap;
+}
+
+
+/* =====================================================
+   ICON CONTAINER
+===================================================== */
+
+.desktop-icon-image {
+  width: 45px;
+  height: 45px;
+
+  margin: 0 auto;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  position: relative;
+}
+
+
+/* =====================================================
+   MONITOR ICON
+===================================================== */
+
+.monitor-icon {
+  position: relative;
+
+  width: 37px;
+  height: 27px;
+
+  border: 2px solid var(--pink-light);
+
+  background: rgba(255, 255, 255, 0.12);
+
+  box-shadow:
+    2px 2px 0 rgba(0,0,0,0.12);
+}
+
+
+.monitor-screen {
+  position: absolute;
+
+  inset: 4px;
+
+  border: 1px solid rgba(255,255,255,0.8);
+}
+
+
+.monitor-stand {
+  position: absolute;
+
+  width: 11px;
+  height: 5px;
+
+  left: 50%;
+  bottom: -8px;
+
+  transform: translateX(-50%);
+
+  border-left: 2px solid var(--pink-light);
+  border-right: 2px solid var(--pink-light);
+
+  background: var(--pink-light);
+}
+
+
+.monitor-stand::after {
+  content: "";
+
+  position: absolute;
+
+  width: 25px;
+  height: 3px;
+
+  left: 50%;
+  bottom: -4px;
+
+  transform: translateX(-50%);
+
+  background: var(--pink-light);
+}
+
+
+/* =====================================================
+   FOLDER ICON
+===================================================== */
+
+.folder-icon {
+  position: relative;
+
+  width: 38px;
+  height: 28px;
+
+  margin-top: 4px;
+
+  background: var(--pink-light);
+
+  border: 1px solid rgba(60, 75, 56, 0.7);
+
+  box-shadow:
+    2px 2px 0 rgba(0,0,0,0.15);
+}
+
+
+.folder-tab {
+  position: absolute;
+
+  width: 14px;
+  height: 7px;
+
+  top: -7px;
+  left: 1px;
+
+  background: var(--pink-light);
+
+  border: 1px solid rgba(60, 75, 56, 0.7);
+
+  border-bottom: none;
+}
+
+
+/* =====================================================
+   ENVELOPE ICON
+===================================================== */
+
+.envelope-icon {
+  position: relative;
+
+  width: 39px;
+  height: 29px;
+
+  background: var(--cream);
+
+  border: 1px solid var(--green-dark);
+
+  box-shadow:
+    2px 2px 0 rgba(0,0,0,0.15);
+}
+
+
+.envelope-line {
+  position: absolute;
+
+  width: 25px;
+  height: 1px;
+
+  top: 12px;
+
+  background: var(--pink);
+
+}
+
+
+.envelope-line.left {
+  left: 1px;
+
+  transform: rotate(34deg);
+}
+
+
+.envelope-line.right {
+  right: 1px;
+
+  transform: rotate(-34deg);
+}
+
+
+/* =====================================================
+   RESUME ICON
+===================================================== */
+
+.resume-icon {
+  position: relative;
+
+  width: 32px;
+  height: 39px;
+
+  background: var(--cream);
+
+  border: 1px solid var(--green-dark);
+
+  box-shadow:
+    2px 2px 0 rgba(0,0,0,0.15);
+}
+
+
+/* folded corner */
+
+.resume-fold {
+  position: absolute;
+
+  top: -1px;
+  right: -1px;
+
+  width: 12px;
+  height: 12px;
+
+  background: var(--pink-light);
+
+  border-left: 1px solid var(--green-dark);
+  border-bottom: 1px solid var(--green-dark);
+
+  clip-path: polygon(0 0, 100% 100%, 0 100%);
+}
+
+
+/* resume lines */
+
+.resume-lines {
+  position: absolute;
+
+  left: 7px;
+  right: 7px;
+  top: 18px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 4px;
+}
+
+
+.resume-lines i {
+  display: block;
+
+  width: 100%;
+  height: 2px;
+
+  background: var(--pink-light);
+}
+
+
+/* =====================================================
+   TASKBAR
+===================================================== */
+
+.taskbar {
+  position: absolute;
+
+  z-index: 5;
+
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  height: 36px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 0 12px;
+
+  background: var(--pink);
+
+  border-top: 1px solid rgba(60,75,56,0.55);
+}
+
+
+/* =====================================================
+   WINDOWS START BUTTON
+===================================================== */
+
+.start-button {
+  width: 24px;
+  height: 24px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+}
+
+
+.windows-logo {
+  width: 16px;
+  height: 16px;
+
+  display: grid;
+
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+
+  gap: 2px;
+
+  transform: skewY(-2deg);
+}
+
+
+.windows-logo span {
+  background: var(--green-dark);
+}
+
+
+/* =====================================================
+   TASKBAR RIGHT
+===================================================== */
+
+.taskbar-right {
+  display: flex;
+
+  align-items: center;
+
+  gap: 14px;
+
+  color: var(--green-dark);
+}
+
+
+/* =====================================================
+   WIFI
+===================================================== */
+
+.wifi-icon {
+  position: relative;
+
+  width: 18px;
+  height: 14px;
+}
+
+
+.wifi-icon span {
+  position: absolute;
+
+  left: 50%;
+
+  transform: translateX(-50%);
+
+  border: 2px solid var(--green-dark);
+
+  border-top-color: var(--green-dark);
+
+  border-left-color: transparent;
+  border-right-color: transparent;
+  border-bottom-color: transparent;
+
+  border-radius: 50%;
+}
+
+
+.wifi-icon span:nth-child(1) {
+  width: 18px;
+  height: 13px;
+
+  top: 0;
+}
+
+
+.wifi-icon span:nth-child(2) {
+  width: 11px;
+  height: 8px;
+
+  top: 4px;
+}
+
+
+.wifi-icon span:nth-child(3) {
+  width: 4px;
+  height: 4px;
+
+  top: 9px;
+
+  background: var(--green-dark);
+
+  border: none;
+}
+
+
+/* =====================================================
+   VOLUME
+===================================================== */
+
+.volume-icon {
+  position: relative;
+
+  width: 19px;
+  height: 16px;
+}
+
+
+.speaker-body {
+  position: absolute;
+
+  left: 0;
+  top: 5px;
+
+  width: 6px;
+  height: 7px;
+
+  background: var(--green-dark);
+}
+
+
+.speaker-body::after {
+  content: "";
+
+  position: absolute;
+
+  left: 5px;
+  top: -4px;
+
+  width: 0;
+  height: 0;
+
+  border-top: 8px solid transparent;
+  border-bottom: 8px solid transparent;
+  border-right: 8px solid var(--green-dark);
+}
+
+
+.speaker-wave {
+  position: absolute;
+
+  border: 1.5px solid var(--green-dark);
+
+  border-left: none;
+
+  border-top-color: transparent;
+  border-bottom-color: transparent;
+
+  border-radius: 0 50% 50% 0;
+}
+
+
+.speaker-wave.one {
+  width: 7px;
+  height: 9px;
+
+  left: 10px;
+  top: 3px;
+}
+
+
+.speaker-wave.two {
+  width: 11px;
+  height: 13px;
+
+  left: 10px;
+  top: 1px;
+}
+
+
+/* =====================================================
+   TASKBAR DIVIDER
+===================================================== */
+
+.taskbar-divider {
+  width: 1px;
+  height: 21px;
+
+  background: var(--green-dark);
+
+  opacity: 0.7;
+}
+
+
+/* =====================================================
+   CLOCK
+===================================================== */
+
+.clock {
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: flex-end;
+
+  gap: 2px;
+
+  min-width: 63px;
+
+  color: var(--green-dark);
+
+  font-size: 8px;
+
+  line-height: 1.1;
+}
+
+
+.clock strong {
+  font-weight: 500;
+
+  font-size: 9px;
+}
+
+
+.clock span {
+  font-size: 7px;
+}
+
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media (max-width: 620px) {
+
+  .page {
+    padding: 15px;
+  }
+
+  .computer-window {
+    width: 94vw;
+    height: auto;
+
+    aspect-ratio: 560 / 370;
+  }
+
+}
